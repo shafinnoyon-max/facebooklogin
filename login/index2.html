@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+</head>
+<body>
+
+    <script>
+        // ১. ইউজার মোবাইল ব্যবহার করছে নাকি কম্পিউটার তা জাভাস্ক্রিপ্ট দিয়ে চেক করা
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        var isMobile = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+
+        // ২. ফেসবুক অ্যাপ এবং ওয়েবসাইটের লিংক সেট করা
+        var appUrl = "fb://"; // এই প্রোটোকলটি মোবাইল অ্যাপ এবং উইন্ডোজ স্টোর অ্যাপ দুটির জন্যই কাজ করে
+        var webUrl = "https://www.facebook.com";
+
+        if (isMobile) {
+            webUrl = "https://m.facebook.com"; // মোবাইল ব্রাউজারের জন্য ফেসবুক লিংক
+        }
+
+        // ৩. প্রথমে ফেসবুক অ্যাপ ওপেন করার চেষ্টা করবে
+        window.location.href = appUrl;
+
+        // ৪. যদি ১.৫ সেকেন্ডের (1500ms) মধ্যে অ্যাপ না খোলে, তবে ব্রাউজারে ফেসবুক ওয়েবসাইট খুলে যাবে
+        setTimeout(function() {
+            window.location.href = webUrl;
+        }, 1500);
+    </script>
+
+    <!-- ব্যাকআপ মেসেজ: যদি অটোমেটিক রিডাইরেক্ট ব্লক হয়, ইউজার এখানে ক্লিক করতে পারবেন -->
+    <div style="text-align: center; font-family: Arial, sans-serif; margin-top: 100px;">
+        <h2>Redirecting to Facebook...</h2>
+        <p>If the app or page doesn't open automatically, <a href="https://www.facebook.com" style="color: #1877F2; font-weight: bold; text-decoration: none;">Click Here</a>.</p>
+    </div>
+
+</body>
+</html>

